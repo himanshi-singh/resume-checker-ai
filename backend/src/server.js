@@ -1,8 +1,3 @@
-const dns = require("dns");
-
-// Use Google DNS for MongoDB SRV resolution
-dns.setServers(["8.8.8.8", "8.8.4.4"]);
-
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
@@ -25,7 +20,7 @@ const app = express();
 app.set("trust proxy", 1);
 app.use(
   cors({
-    origin: true,
+    origin: env.clientOrigins,
     credentials: true,
   }),
 );
